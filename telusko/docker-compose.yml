@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - pgadmin
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: telusko
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: swapnaadhav123@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: swapna12
+    ports:
+      - "80:80"
+
+ 
